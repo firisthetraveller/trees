@@ -7,14 +7,14 @@ var renderer = new THREE.WebGLRenderer({antialias : true});
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.append(renderer.domElement);
 
-var cube= new THREE.BoxGeometry(1,1,0.5);
-var material = new THREE.MeshPhongMaterial({color:salmon});
+var cube= new THREE.BoxGeometry(1,1,0.10);
+var material = new THREE.MeshBasicMaterial({color:0x8B4513});
 var ground = new THREE.Mesh(cube,material);
 scene.add(ground);
 
-ground.position.z=-5;
+ground.position.z=-2;
 ground.rotation.x=2;
-ground.rotation.y=6;
+ground.rotation.y=3;
 
 renderer.render(scene,camera);
 
