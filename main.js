@@ -5,7 +5,7 @@ var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeigh
 
 var renderer = new THREE.WebGLRenderer({antialias : true});
 renderer.setSize(window.innerWidth, window.innerHeight);
-$('body').append(renderer.domElement);
+document.body.append(renderer.domElement);
 
 var cube= new THREE.BoxGeometry(1,1,0.5);
 var material = new THREE.MeshPhongMaterial({color:salmon});
