@@ -1,4 +1,4 @@
-body { margin: 0; }
+body { margin: 0;}
 
 .infos{
     position: absolute;
@@ -7,8 +7,7 @@ body { margin: 0; }
 	text-align: center;
 	z-index: 0;
 	display:block;
-    color:white;
-    background-color: #242424;
+    color:#fefaef;
 }
 
 h1 {
