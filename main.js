@@ -14,7 +14,8 @@ scene.add(ground);
 
 ground.position.z=-2;
 ground.rotation.x=2;
-ground.rotation.y=3;
+ground.rotation.y=-3.2;
+ground.rotation.z =3.5;
 
 renderer.render(scene,camera);
 
