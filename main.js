@@ -56,6 +56,7 @@ const cameraPositionFolder = gui.addFolder('Camera');
 cameraPositionFolder.add(camera.position, 'z', 0, 20);
 
 // You can open the folder by default with: folderName.open();
+// Ex: cameraPositionFolder.open();
 
 const treeFolder = gui.addFolder('Tree');
 const treeRotationFolder = treeFolder.addFolder('Rotation');
