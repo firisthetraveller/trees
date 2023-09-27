@@ -40,6 +40,7 @@ const gui = new GUI();
 
 // Add a folder: it is a dropdown button
 const cameraPositionFolder = gui.addFolder('Camera');
+
 // It adds inside the folder a modifiable field
 // Here it is the z coordinate of the camera.
 // 
@@ -52,13 +53,15 @@ const cameraPositionFolder = gui.addFolder('Camera');
 // For a slider, add two more values :
 // 3 - min value
 // 4 - max value
-// 5 - optional: step (smallest increment possible)
+// 5 - optional: step (smallest increment possible), default: 0.1
 cameraPositionFolder.add(camera.position, 'z', 0, 20);
 
 // You can open the folder by default with: folderName.open();
 // Ex: cameraPositionFolder.open();
 
 const treeFolder = gui.addFolder('Tree');
+
+// You can also add folders inside a folder.
 const treeRotationFolder = treeFolder.addFolder('Rotation');
 treeRotationFolder.add(tree.rotation, 'x', 0, Math.PI * 2);
 treeRotationFolder.add(tree.rotation, 'y', 0, Math.PI * 2);
