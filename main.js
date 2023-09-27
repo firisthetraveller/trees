@@ -1,7 +1,10 @@
 import * as THREE from 'three';
 import { GUI } from 'dat.gui';
 
+// Création de la scène
 var scene = new THREE.Scene();
+scene.background = new THREE.Color('lightblue');
+
 var camera = new THREE.PerspectiveCamera(
 	75,
 	window.innerWidth / window.innerHeight);
@@ -23,7 +26,7 @@ let tree = new THREE.Object3D();
 
 // Ground
 var cube = new THREE.BoxGeometry(1, 1, 0.10);
-var material = new THREE.MeshPhongMaterial({ color: 0x8B4513 });
+var material = new THREE.MeshPhongMaterial({ color: 0x556B2F });
 var ground = new THREE.Mesh(cube, material);
 scene.add(ground);
 
@@ -42,6 +45,30 @@ const treeRotationFolder = treeFolder.addFolder('Rotation');
 treeRotationFolder.add(tree.rotation, 'x', 0, Math.PI * 2);
 treeRotationFolder.add(tree.rotation, 'y', 0, Math.PI * 2);
 treeRotationFolder.add(tree.rotation, 'z', 0, Math.PI * 2);
+
+//Creation des textures
+// const textureLoader = new THREE.TextureLoader();
+// //Texture for the ground
+// const textureGround = [
+//     new THREE.MeshPhongMaterial({
+//         map : textureLoader.load("textures/grass.png"),
+//     }),
+//     new THREE.MeshPhongMaterial({
+//         map : textureLoader.load("../textures/grass.png"),
+//     }),
+//     new THREE.MeshPhongMaterial({
+//         map : textureLoader.load("../textures/grass.png"),
+//     }),
+//     new THREE.MeshPhongMaterial({
+//         map : textureLoader.load("../textures/grass.png"),
+//     }),
+//     new THREE.MeshPhongMaterial({
+//         map : textureLoader.load("../textures/grass.png"),
+//     }),
+//     new THREE.MeshPhongMaterial({
+//         map : textureLoader.load("../textures/grass.png"),
+//     }),
+// ];
 
 renderer.render(scene,camera);
 // Create an animation loop
