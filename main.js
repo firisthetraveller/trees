@@ -131,6 +131,19 @@ const height = 1;
 
 /**
  * 
+ * @param {float} a angle 
+ * @param {float} b angle
+ * @returns 
+ * @todo apply angle a and b
+ */
+function generateFruitPosition(offset, a = 0.0, b = 0.0) {
+	let position = Math.floor(5 * Math.random());
+	const angle = 125.0;
+	return new THREE.Vector3(offset, 0, 0).applyAxisAngle(new THREE.Vector3(0, 1, 0), angle * position);
+}
+
+/**
+ * 
  * @param {THREE.Object3D} tree
  * @param {THREE.Vector3} position the position of the base
  * @param {string} lstring generated from a rule
@@ -170,7 +183,7 @@ function createTree(tree, position, lstring, radius = 0.3, angle = 0) {
 		geometry = new THREE.SphereGeometry(0.2, 8, 20, 32);
 		material = new THREE.MeshPhongMaterial({ color: 0xff00 });
 		mesh = new THREE.Mesh(geometry, material);
-		mesh.position.copy(position).add(new THREE.Vector3(radius - 0.1, 0, 0));
+		mesh.position.copy(position).add(generateFruitPosition(radius));
 		tree.add(mesh);
 		return createTree(tree, position, lstring.slice(1), radius, angle);
 	}
