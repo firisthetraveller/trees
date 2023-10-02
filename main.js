@@ -124,9 +124,10 @@ class Rule {
 
 let basicRule = new Rule(
 	'A',
-	{ 'A': 'AABA', 'B': 'B', '[': '[', ']': ']' });
+	{ 'A': 'AA+A-AB[AAB]', 'B': 'B', '[': '[', ']': ']', '+': '+', '-': '-' });
 
-const offsetValue = 20;
+const branchOffsetValue = 20;
+const ruleOffsetValue = 10;
 const height = 1;
 
 /**
@@ -165,19 +166,24 @@ function createTree(tree, position, lstring, radius = 0.3, angle = 0) {
 
 	switch (lstring.charAt(0)) {
 	case '[':
-		return createTree(tree, position, lstring.slice(1), radius, angle + offsetValue);
+		return createTree(tree, position, lstring.slice(1), radius, angle + branchOffsetValue);
 	case ']':
 		return createTree(tree, position, lstring.slice(1), radius, angle);
+	case '+':
+		return createTree(tree, position, lstring.slice(1), radius, angle + ruleOffsetValue);
+	case '-':
+		return createTree(tree, position, lstring.slice(1), radius, angle - ruleOffsetValue);
 	case 'A':
 		console.log('Creating a trunk');
 		computedRadius = Math.max(radius - 0.03, 0.1);
 		geometry = new THREE.CylinderGeometry(computedRadius, radius, height, 20, 32);
 		material = new THREE.MeshPhongMaterial({ color: 0xffaa00 });
 		mesh = new THREE.Mesh(geometry, material);
+		mesh.rotation.set(angle, 0, 0);
 		mesh.position.copy(position);
 		tree.add(mesh);
 
-		return createTree(tree, new THREE.Vector3(0, height, 0).add(position), lstring.slice(1), computedRadius, angle);
+		return createTree(tree, new THREE.Vector3(0, height, 0).applyAxisAngle(new THREE.Vector3(1, 0, 0), angle).add(position), lstring.slice(1), computedRadius, angle);
 	case 'B':
 		console.log('Creating a fruit');
 		geometry = new THREE.SphereGeometry(0.2, 8, 20, 32);
